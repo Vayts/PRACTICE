@@ -1,0 +1,125 @@
+$mainColor: #83af6b;
+$subColor: #f3636b;
+$disabledColor: #e9efe9;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F0FFFFFF;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.calendar {
+  background-color: #ffffff;
+  box-shadow: 6px 10px 48px 14px rgba(34, 60, 80, 0.25);
+}
+
+.calendar__title {
+  background-color: #538856;
+  padding: 20px 0 10px;
+  color: #ffffff;
+
+  .month-title__text {
+    letter-spacing: 5px;
+    font-weight: 200;
+    font-size: 60px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .day-of-week__list {
+    display: flex;
+    text-align: center;
+
+    .day-of-week__item {
+      width: 100%;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 200;
+    }
+  }
+
+}
+
+.list-days {
+  flex-wrap: wrap;
+  display: flex;
+
+  .list-days__day-item {
+    width: 100px;
+    &:nth-child(7n + 1), &:nth-child(7n) {
+      color: red;
+
+      & {
+        .list-days__day:hover {
+          background-color: #c7e0ab;
+        }
+      }
+    }
+
+    .calendar__input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+
+      &:checked + .list-days__day {
+        background-color: $mainColor;
+        color: #ffffff;
+
+        &:hover {
+          background-color: $mainColor;
+        }
+      }
+
+      &[disabled] + .list-days__day {
+        background-color: $disabledColor;
+
+        &:hover {
+          background-color: $disabledColor;
+        }
+      }
+    }
+  }
+
+  .list-days__day {
+    height: 100px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 25px;
+    transition: all 0.1s ease-in;
+    user-select: none;
+
+    &:hover {
+      background-color: #abe08b;
+    }
+
+    &--holiday {
+      background-color: #c4e5a3;
+      color: $subColor;
+    }
+  }
+}
