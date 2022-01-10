@@ -11,16 +11,16 @@ function sum (c) {
 
 
 describe('myBind', () => {
-    test('{ a: 3, c: 2}', () => {
+    test('sum, { a: 100, b: 200}, arg: 100', () => {
         expect(myBind(sum, obj)(100)).toBe(400)
     })
-    test('{ a: 3, c:undefined}, { c: 2, a: 3 }', () => {
-        expect(myBind({ a: 3, c: undefined}, { c: 2, a: 3 })).toEqual(true)
+    test('sum, { c: 2, a: 3 }', () => {
+        expect(myBind(sum, obj)(2)).toEqual(302)
     })
-    test('{}, { c: 1, a: 3 }', () => {
-        expect(myBind({})).toEqual(true)
+    test('sum, 1', () => {
+        expect(myBind(sum, 1)).toEqual('Invalid input data')
     })
     test('"string"', () => {
-        expect(myBind('string')).toEqual('Invalid input data')
+        expect(myBind('string', obj)).toEqual('Invalid input data')
     })
 })

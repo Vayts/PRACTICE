@@ -1,17 +1,20 @@
 function checkObjectEquality(objA, objB) {
 
+    if (!objA || !objB) {
+        return 'Invalid input data'
+    }
+
     if (typeof objA !== 'object' || typeof objB !== 'object') {
         return 'Invalid input data'
     }
 
-    let obj;
+    let obj = objA;
 
-    if (Object.keys(objA).length > Object.keys(objB).length) {
-        obj = objA;
-    } else {
-        obj = objB;
+    if (Object.keys(objA).length !== Object.keys(objB).length) {
+        return false;
     }
-    let result = false;
+
+    let result = true;
 
     for (let key in obj) {
         const valueA = objA[key]
@@ -29,5 +32,7 @@ function checkObjectEquality(objA, objB) {
     }
     return result
 }
+
+console.log(checkObjectEquality({a: 3, c: 2}, {c:2, a: 3}))
 
 module.exports = checkObjectEquality;

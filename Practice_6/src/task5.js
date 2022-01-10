@@ -1,26 +1,22 @@
-const obj = {
-    a: 100,
-    b: 200
-}
+function myBind(fn, context) {
 
-function sum (c) {
-    return this.a + this.b + c
-}
+    if (typeof fn !== 'function') {
+        return 'Invalid input data'
+    }
 
+    if (typeof context !== 'object') {
+        return 'Invalid input data'
+    }
 
-
-function myBind(fn, context, ...rest) {
     return function (...args) {
         let uniqKey = Date.now().toString()
         context[uniqKey] = fn;
-        const result = context[uniqKey](...rest.concat(...args))
+        const result = context[uniqKey](...args)
 
         delete context[uniqKey]
         return result
     }
 }
-
-console.log(myBind(sum, obj)(100))
 
 module.exports = myBind;
 
