@@ -1,66 +1,66 @@
 const {Validator} = require('../src/task2');
 
-let isEmailTrue = new Validator('test@gmail.com')
-let isEmailFalse = new Validator('false')
-let isEmailInvalid = new Validator(4)
-
 describe('IsEmail', () => {
+    const validatorTest = new Validator();
     test('test@gmail.com', () => {
-        expect(isEmailTrue.isEmail()).toBe(true)
+        expect(validatorTest.isEmail('test@gmail.com')).toBe(true)
     })
-    test('false', () => {
-        expect(isEmailFalse.isEmail()).toBe(false)
+    test('testgmail.com', () => {
+        expect(validatorTest.isEmail('testgmail.com')).toBe(false)
+    })
+    test('null', () => {
+        expect(validatorTest.isEmail(null)).toBe('Invalid input data')
     })
     test('4', () => {
-        expect(isEmailInvalid.isEmail()).toBe('Invalid input data')
+        expect(validatorTest.isEmail(4)).toBe('Invalid input data')
     })
 })
-
-let isDomainTrue = new Validator('test.com')
-let isDomainFalse = new Validator('test/com')
-let isDomainInvalid = new Validator(4)
 
 describe('IsDomain', () => {
+    const validatorTest = new Validator()
     test('test@gmail.com', () => {
-        expect(isDomainTrue.isDomain()).toBe(true)
+        expect(validatorTest.isDomain('test.com')).toBe(true)
     })
     test('false', () => {
-        expect(isDomainFalse.isDomain()).toBe(false)
+        expect(validatorTest.isDomain('test/com')).toBe(false)
     })
     test('4', () => {
-        expect(isDomainInvalid.isDomain()).toBe('Invalid input data')
+        expect(validatorTest.isDomain(4)).toBe('Invalid input data')
+    })
+    test('null', () => {
+        expect(validatorTest.isDomain(null)).toBe('Invalid input data')
     })
 })
-
-let isPhoneTrue = new Validator('+380 (99)-278-87-08')
-let isPhoneFalse = new Validator('test/com')
-let isPhoneInvalid = new Validator(4)
 
 describe('IsPhone', () => {
+    const validatorTest = new Validator();
     test('test@gmail.com', () => {
-        expect(isPhoneTrue.isPhone()).toBe(true)
+        expect(validatorTest.isPhone('+380 (99)-278-87-08')).toBe(true)
     })
     test('false', () => {
-        expect(isPhoneFalse.isPhone()).toBe(false)
+        expect(validatorTest.isPhone('test/com')).toBe(false)
     })
     test('4', () => {
-        expect(isPhoneInvalid.isPhone()).toBe('Invalid input data')
+        expect(validatorTest.isPhone(4)).toBe('Invalid input data')
+    })
+    test('null', () => {
+        expect(validatorTest.isPhone(null)).toBe('Invalid input data')
     })
 })
 
-let isDateTrue = new Validator('20.12.2001')
-let isDateFalse = new Validator('test/com')
-let isDateInvalid = new Validator(4)
-
 describe('IsDate', () => {
+    const validatorTest = new Validator();
     test('test@gmail.com', () => {
-        expect(isDateTrue.isDate()).toBe(true)
+        expect(validatorTest.isDate('20.12.2001')).toBe(true)
     })
     test('false', () => {
-        expect(isDateFalse.isDate()).toBe(false)
+        expect(validatorTest.isDate('12/22/2011')).toBe(false)
     })
     test('4', () => {
-        expect(isDateInvalid.isDate()).toBe('Invalid input data')
+        expect(validatorTest.isDate(4)).toBe('Invalid input data')
+    })
+    test('4', () => {
+        expect(validatorTest.isDate(null)).toBe('Invalid input data')
     })
 })
 

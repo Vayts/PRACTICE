@@ -1,42 +1,40 @@
 const {MyString} = require('../src/task1')
 
-let testString = new MyString('test test')
-let testStringNull = new MyString(null)
-let testStringInvalid = new MyString(12)
-
-
 describe('reverse', () => {
+    const testString = new MyString();
     test('test test', ()=> {
-        expect(testString.reverse()).toBe('tset tset')
+        expect(testString.reverse('test test')).toBe('tset tset')
     })
     test('null', ()=> {
-        expect(testStringNull.reverse()).toBe('Invalid input data')
+        expect(testString.reverse(null)).toBe('Invalid input data')
     })
     test('12', ()=> {
-        expect(testStringInvalid.reverse()).toBe('Invalid input data')
+        expect(testString.reverse(1)).toBe('Invalid input data')
     })
 })
 
 describe('ucFirst', () => {
+    const testString = new MyString();
     test('test test', ()=> {
-        expect(testString.ucFirst()).toBe('Test test')
+        expect(testString.ucFirst('test test')).toBe('Test test')
     })
     test('null', ()=> {
-        expect(testStringNull.ucFirst()).toBe('Invalid input data')
+        expect(testString.ucFirst(null)).toBe('Invalid input data')
     })
     test('12', ()=> {
-        expect(testStringInvalid.ucFirst()).toBe('Invalid input data')
+        expect(testString.ucFirst(12)).toBe('Invalid input data')
     })
 })
 
 describe('ucWords', () => {
+    const testString = new MyString();
     test('test test', ()=> {
-        expect(testString.ucWords()).toBe('Test Test')
+        expect(testString.ucWords('test test')).toBe('Test Test')
     })
     test('null', ()=> {
-        expect(testStringNull.ucWords()).toBe('Invalid input data')
+        expect(testString.ucWords(null)).toBe('Invalid input data')
     })
     test('12', ()=> {
-        expect(testStringInvalid.ucWords()).toBe('Invalid input data')
+        expect(testString.ucWords(12)).toBe('Invalid input data')
     })
 })
