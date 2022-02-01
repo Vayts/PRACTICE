@@ -4,7 +4,12 @@ export function encodeMorse(string: string): any {
     return string
         .split(' ')
         .map(el => {
-            return el.split('').map(str => {
+
+            if (el === 'SOS') {
+                return '...___...'
+            }
+            return el.split('')
+                .map(str => {
                 let isEncoded = false;
                 for (let m = 0; m < mappings.length; m++) {
 
@@ -13,9 +18,11 @@ export function encodeMorse(string: string): any {
                         return mappings[m].symbol
                     }
                 }
+
                 if (isEncoded === false) {
                     throw new Error('Invalid code')
                 }
-            }).join(' ')
-        }).join('  ')
+
+            }).join(' ');
+        }).join('  ');
 }

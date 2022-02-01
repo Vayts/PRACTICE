@@ -12,5 +12,8 @@ describe('decode', () => {
            decodeMorse('.... . -...--  .--- ..- -.. .')
        }).toThrow('Invalid code')
     })
+    test('should return HEY JUDE', () => {
+        expect(decodeMorse('...___...  .--- ..- -.. .')).toEqual('SOS JUDE')
+    })
 })
 
